@@ -1,0 +1,67 @@
+{
+	"name": "tailwindcss-extension-pack",
+	"displayName": "Tailwind CSS Extension Pack",
+	"version": "1.1.4",
+	"description": "A collection of extensions for developing with Tailwind CSS",
+	"categories": [
+		"Extension Packs"
+	],
+	"keywords": [
+		"tailwind",
+		"tailwindui",
+		"tailwindcss",
+		"css",
+		"pack",
+		"packs",
+		"extensions",
+		"vscode"
+	],
+	"homepage": "https://marketplace.visualstudio.com/items?itemName=andrewmcodes.tailwindcss-extension-pack",
+	"bugs": {
+		"url": "https://github.com/andrewmcodes/vscode-tailwindcss-extension-pack/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/andrewmcodes/vscode-tailwindcss-extension-pack"
+	},
+	"license": "MIT",
+	"author": "Andrew Mason <andrewmcodes@protonmail.com>",
+	"publisher": "andrewmcodes",
+	"scripts": {
+		"release": "standard-version",
+		"deploy": "vsce publish --yarn",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"devDependencies": {
+		"standard-version": "^9.0.0",
+		"vsce": "^1.81.1"
+	},
+	"extensionPack": [
+		"austenc.tailwind-docs",
+		"bradlc.vscode-tailwindcss",
+		"heybourn.headwind",
+		"macieklad.tailwind-sass-syntax"
+	],
+	"engines": {
+		"vscode": "^1.47.0"
+	},
+	"icon": "assets/logo.png",
+	"galleryBanner": {
+		"color": "#16BDCA",
+		"theme": "dark"
+	},
+	"__metadata": {
+		"id": "0213bf89-6698-493d-bcf7-8609b1fb2e6b",
+		"publisherId": "a267f287-c929-4c5a-bae4-1879ebfba93d",
+		"publisherDisplayName": "Andrew Mason",
+		"targetPlatform": "undefined",
+		"isApplicationScoped": false,
+		"isPreReleaseVersion": false,
+		"hasPreReleaseVersion": false,
+		"installedTimestamp": 1737505594011,
+		"pinned": false,
+		"preRelease": false,
+		"source": "gallery",
+		"size": 96186
+	}
+}

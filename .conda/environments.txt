@@ -1,0 +1,2 @@
+C:\Users\santh\anaconda3
+C:\Users\santh\anaconda3\envs\textgeneration

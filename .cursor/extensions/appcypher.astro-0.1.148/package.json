@@ -1,0 +1,76 @@
+{
+	"name": "astro",
+	"displayName": "Astro",
+	"description": "Astro extension for Visual Studio Code",
+	"version": "0.1.148",
+	"publisher": "appcypher",
+	"repository": "https://github.com/appcypher/astro-vscode",
+	"engines": {
+		"vscode": "^0.10.5"
+	},
+	"icon": "icon.png",
+	"keywords": [
+		"astro",
+		"appcypher",
+		"nigeria",
+		"language"
+	],
+	"categories": [
+		"Programming Languages",
+		"Debuggers",
+		"Linters",
+		"Snippets",
+		"Formatters",
+		"Other"
+	],
+	"activationEvents": [
+		"onLanguage:astro",
+		"onDebug:astro"
+	],
+	"main": "./out/astroMain",
+	"contributes": {
+		"languages": [
+			{
+				"id": "astro",
+				"aliases": [
+					"Astro",
+					"astro"
+				],
+				"extensions": [
+					".ast",
+					".astro"
+				],
+				"configuration": "./language-configuration.json"
+			}
+		],
+		"grammars": [
+			{
+				"language": "astro",
+				"scopeName": "source.astro",
+				"path": "./syntaxes/astro.tmLanguage.json"
+			}
+		],
+		"snippets": [
+			{
+				"language": "astro",
+				"path": "./snippets/snippets.json"
+			}
+		]
+	},
+	"author": "appcypher",
+	"license": "ISC",
+	"__metadata": {
+		"id": "b60cc377-43f7-40e8-aad7-300f012b1247",
+		"publisherId": "7269c9f0-bc46-4421-9b5c-e4174b430c03",
+		"publisherDisplayName": "Steve Akinyemi",
+		"targetPlatform": "undefined",
+		"isApplicationScoped": false,
+		"isPreReleaseVersion": false,
+		"hasPreReleaseVersion": false,
+		"installedTimestamp": 1725492913921,
+		"pinned": false,
+		"preRelease": false,
+		"source": "gallery",
+		"size": 36891
+	}
+}

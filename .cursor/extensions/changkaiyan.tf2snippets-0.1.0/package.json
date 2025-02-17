@@ -1,0 +1,50 @@
+{
+	"name": "tf2snippets",
+	"displayName": "Tensorflow 2.0 Snippets",
+	"description": "TensorFlow 2.0 Snippets for VS Code",
+	"version": "0.1.0",
+	"publisher": "changkaiyan",
+	"keywords": [
+		"tensorflow",
+		"snippets",
+		"deeplearning"
+	],
+	"icon": "images/tf.png",
+	"engines": {
+		"vscode": "^1.28.0"
+	},
+	"categories": [
+		"Snippets"
+	],
+	"contributes": {
+		"snippets": [
+			{
+				"language": "python",
+				"path": "./src/snippets.json"
+			}
+		]
+	},
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/changkaiyan/tensorflow2snippets/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/changkaiyan/tensorflow2snippets"
+	},
+	"homepage": "https://github.com/changkaiyan/tensorflow2snippets/blob/master/README.md",
+	"__metadata": {
+		"id": "d7b9c650-0a16-4d53-8392-2212d736a9de",
+		"publisherId": "c7963ce7-0bb7-40e9-a0df-43615ebbdf73",
+		"publisherDisplayName": "changkaiyan",
+		"targetPlatform": "undefined",
+		"isApplicationScoped": false,
+		"isPreReleaseVersion": false,
+		"hasPreReleaseVersion": false,
+		"installedTimestamp": 1739418189564,
+		"pinned": false,
+		"preRelease": false,
+		"source": "gallery",
+		"size": 1318181
+	}
+}

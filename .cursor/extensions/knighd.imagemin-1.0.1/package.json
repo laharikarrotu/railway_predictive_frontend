@@ -1,0 +1,91 @@
+{
+	"name": "imagemin",
+	"displayName": "ImageMin",
+	"description": "本地压缩 jpg/jpeg/png 图片",
+	"publisher": "knighd",
+	"version": "1.0.1",
+	"icon": "images/imagemin.png",
+	"engines": {
+		"vscode": "^1.41.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:extension.imagemin"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "extension.imagemin",
+				"title": "ImageMin: compress image"
+			}
+		],
+		"menus": {
+			"explorer/context": [
+				{
+					"command": "extension.imagemin"
+				}
+			]
+		},
+		"configuration": {
+			"title": "ImageMin Plugin User Settings",
+			"properties": {
+				"imagemin.replaceOriginImage": {
+					"type": "boolean",
+					"default": true,
+					"description": "Whether replace the origin images"
+				}
+			}
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "yarn run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"pretest": "yarn run compile",
+		"test": "node ./out/test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/glob": "^7.1.1",
+		"@types/mocha": "^5.2.7",
+		"@types/node": "^12.11.7",
+		"@types/vscode": "^1.41.0",
+		"glob": "^7.1.5",
+		"mocha": "^6.2.2",
+		"typescript": "^3.6.4",
+		"tslint": "^5.20.0",
+		"vscode-test": "^1.2.2"
+	},
+	"dependencies": {
+		"@types/fs-extra": "^8.0.1",
+		"filesize": "^6.0.1",
+		"fs-extra": "^8.1.0",
+		"imagemin": "^7.0.1",
+		"imagemin-jpegtran": "^6.0.0",
+		"imagemin-mozjpeg": "^8.0.0",
+		"imagemin-optipng": "^7.1.0",
+		"imagemin-pngquant": "^8.0.0"
+	},
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/KNighD/vscode-imagemin"
+	},
+	"homepage": "https://github.com/KNighD/vscode-imagemin/blob/master/README.md",
+	"__metadata": {
+		"id": "22a60e5e-1955-4943-be04-ac1f16d8ac3a",
+		"publisherId": "a4411604-7574-4224-b537-0a4c4d2eea3a",
+		"publisherDisplayName": "knighd",
+		"targetPlatform": "undefined",
+		"isApplicationScoped": false,
+		"isPreReleaseVersion": false,
+		"hasPreReleaseVersion": false,
+		"installedTimestamp": 1737892256822,
+		"pinned": false,
+		"preRelease": false,
+		"source": "gallery",
+		"size": 8698205
+	}
+}
