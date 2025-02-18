@@ -1,0 +1,101 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Railway Anomaly Detection API with Lambda and SageMaker integration
+
+Parameters:
+  EndpointName:
+    Type: String
+    Default: railway-predictive-maintenance
+    Description: Name of the SageMaker endpoint
+
+Resources:
+  railwayanomalydetectiondevpredict:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: .
+      Description: Lambda function for railway anomaly detection
+      MemorySize: 1024
+      Timeout: 6
+      Handler: src/lambda/predict.lambda_handler
+      Runtime: python3.9
+      Architectures:
+        - x86_64
+      EphemeralStorage:
+        Size: 512
+      Environment:
+        Variables:
+          ENDPOINT_NAME: !Ref EndpointName
+      EventInvokeConfig:
+        MaximumEventAgeInSeconds: 21600
+        MaximumRetryAttempts: 2
+      Layers:
+        - !Ref PythonDependenciesLayer
+      PackageType: Zip
+      Policies:
+        - Statement:
+            - Effect: Allow
+              Action:
+                - logs:CreateLogStream
+                - logs:CreateLogGroup
+                - logs:TagResource
+                - logs:PutLogEvents
+              Resource:
+                - !Sub 'arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/railway-anomaly-detection-dev*:*'
+                - !Sub 'arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/railway-anomaly-detection-dev*:*:*'
+            - Effect: Allow
+              Action:
+                - sagemaker:InvokeEndpoint
+              Resource:
+                - !Sub 'arn:aws:sagemaker:${AWS::Region}:${AWS::AccountId}:endpoint/${EndpointName}'
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            RestApiId: !Ref ApiGatewayApi
+            Path: /predict
+            Method: POST
+
+  PythonDependenciesLayer:
+    Type: AWS::Serverless::LayerVersion
+    Properties:
+      LayerName: python-deps
+      Description: Python dependencies for railway anomaly detection
+      ContentUri: ./python-deps
+      CompatibleRuntimes:
+        - python3.9
+      RetentionPolicy: Retain
+
+  ApiGatewayApi:
+    Type: AWS::Serverless::Api
+    Properties:
+      StageName: dev
+      EndpointConfiguration: 
+        Type: REGIONAL
+      Cors:
+        AllowMethods: "'POST,OPTIONS'"
+        AllowHeaders: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key'"
+        AllowOrigin: "'*'"
+        MaxAge: "'3600'"
+      Auth:
+        DefaultAuthorizer: NONE
+      GatewayResponses:
+        DEFAULT_4XX:
+          ResponseParameters:
+            Headers:
+              Access-Control-Allow-Origin: "'*'"
+              Access-Control-Allow-Headers: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key'"
+              Access-Control-Allow-Methods: "'POST,OPTIONS'"
+        DEFAULT_5XX:
+          ResponseParameters:
+            Headers:
+              Access-Control-Allow-Origin: "'*'"
+              Access-Control-Allow-Headers: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key'"
+              Access-Control-Allow-Methods: "'POST,OPTIONS'"
+
+Outputs:
+  ApiURL:
+    Description: API Gateway endpoint URL
+    Value: !Sub 'https://${ApiGatewayApi}.execute-api.${AWS::Region}.amazonaws.com/dev/'
+  LambdaFunction:
+    Description: Lambda Function ARN
+    Value: !GetAtt railwayanomalydetectiondevpredict.Arn 

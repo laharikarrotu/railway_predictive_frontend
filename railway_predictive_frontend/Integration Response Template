@@ -1,0 +1,15 @@
+#set($inputRoot = $input.path('$'))
+{
+    "statusCode": 200,
+    "headers": {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Headers": "Content-Type",
+        "Access-Control-Allow-Methods": "POST,OPTIONS",
+        "Content-Type": "application/json"
+    },
+    "body": {
+        "probability": $input.json('$.body.probability'),
+        "prediction": $input.json('$.body.prediction'),
+        "confidence": $input.json('$.body.confidence')
+    }
+} 
